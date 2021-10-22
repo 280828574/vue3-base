@@ -58,7 +58,6 @@
 </script>
 <style lang="scss">
   .sidebar-main-wrap {
-    width: 240px;
     height: 100%;
     background: #304156;
     .el-menu {
