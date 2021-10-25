@@ -4,7 +4,7 @@
 -->
 <template>
   <div id="about">{{ msg }}</div>
-  <el-button class="btn1 rk-mb-15" type="primary" plain @click="menuClick">点击</el-button>
+  <el-button class="btn1 rk-mb-15" type="primary" plain @click="menuClick">点击1</el-button>
   <div class="div">{{ height }}</div>
 </template>
 <script>
@@ -24,9 +24,6 @@
     setup(props, { emit }) {
       function menuClick() {
         height.value = '333px';
-        props.msg = '222222222';
-        // 通过自定义事件回传值
-        // emit('$1', $2);
       }
       let height = ref('33px');
       return { menuClick, height };

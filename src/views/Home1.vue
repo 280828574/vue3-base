@@ -30,9 +30,10 @@
 
       onMounted(() => {
         let $api = getCurrentInstance().appContext.config.globalProperties.$api;
-        // api.user.fetchUsers().then(res => {
-        //   console.log('res2222 :>> ', res);
-        // });
+        console.log('$api :>> ', $api);
+        $api.user.fetchUsers().then(res => {
+          console.log('res2222 :>> ', res);
+        });
       });
       const state = reactive(a);
       return toRefs(state);
