@@ -4,10 +4,8 @@
 -->
 <template>
   <div class="navbar-wrap flex-zy rk-pr-15">
-    <di>
-      <i class="el-icon-s-unfold curp rk-ml-15" v-if="isCollapse" @click="changeSildebar"></i>
-      <i class="el-icon-s-fold curp rk-ml-15" v-else @click="changeSildebar"></i>
-    </di>
+    <i class="el-icon-s-unfold curp rk-ml-15" v-if="isCollapse" @click="changeSildebar"></i>
+    <i class="el-icon-s-fold curp rk-ml-15" v-else @click="changeSildebar"></i>
     <div>
       <el-dropdown trigger="click" @command="handleCommand">
         <div class="flex-czjz curp">

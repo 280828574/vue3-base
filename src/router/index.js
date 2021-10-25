@@ -20,6 +20,25 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/home1',
+    component: layout,
+    redirect: '/home1',
+    meta: {
+      title: '首页1',
+      icon: 'el-icon-folder',
+    },
+    children: [
+      {
+        path: '/home1',
+        name: 'home1',
+        component: () => import('@/views/Home1.vue'),
+        meta: {
+          title: '首页1',
+        },
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

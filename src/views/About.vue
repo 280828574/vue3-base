@@ -8,9 +8,9 @@
   <div class="div">{{ height }}</div>
 </template>
 <script>
-  import { defineComponent, ref, defineProps } from 'vue';
+  import { ref } from 'vue';
 
-  export default defineComponent({
+  export default {
     props: {
       msg: {
         // 菜单数据
@@ -31,7 +31,7 @@
       let height = ref('33px');
       return { menuClick, height };
     },
-  });
+  };
 </script>
 <style lang="scss">
   .div {
