@@ -28,13 +28,7 @@
         },
       };
 
-      onMounted(() => {
-        let $api = getCurrentInstance().appContext.config.globalProperties.$api;
-        console.log('$api :>> ', $api);
-        $api.user.fetchUsers().then(res => {
-          console.log('res2222 :>> ', res);
-        });
-      });
+      onMounted(() => {});
       const state = reactive(a);
       return toRefs(state);
     },
