@@ -66,8 +66,8 @@
     .el-menu-vertical-wrap:not(.el-menu--collapse) {
       width: 240px;
     }
-    .el-sub-menu [class^='el-icon-'] {
-      font-size: inherit;
+    .el-menu-item [class^='el-icon-'] {
+      font-size: 14px;
     }
     .el-menu--collapse .el-sub-menu.is-active i {
       color: #409eff;
@@ -75,7 +75,8 @@
     .el-menu-vertical-wrap {
       background: #304156;
       height: 100%;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       span,
       .el-menu-item,
       .el-sub-menu__title i {

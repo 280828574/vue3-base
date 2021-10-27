@@ -36,7 +36,6 @@
       @current-change="changePage"
     >
     </el-pagination>
-    <el-drawer v-model="drawer" title="$1" direction="rtl" :destroy-on-close="true" :close-on-click-modal="false"></el-drawer>
   </div>
 </template>
 <script>
