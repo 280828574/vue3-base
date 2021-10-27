@@ -9,7 +9,9 @@
     <div>
       <el-dropdown trigger="click" @command="handleCommand">
         <div class="flex-czjz curp">
-          <span class="el-dropdown-img-wrap"></span>
+          <span class="el-dropdown-img-wrap tac">
+            {{ name }}
+          </span>
           <span class="crup"> <i class="el-icon-arrow-down el-icon--right dropdown-icon"></i></span>
         </div>
         <template #dropdown>
@@ -45,10 +47,12 @@
         }
         router.push({ path: type });
       };
+      let name = 'A';
       return {
         changeSildebar,
         isCollapse,
         handleCommand,
+        name,
       };
     },
   };
@@ -65,8 +69,10 @@
       display: inline-block;
       width: 40px;
       height: 40px;
+      line-height: 40px;
       background: #f5f5f5;
       border-radius: 50%;
+      font-size: 24px;
     }
     .dropdown-icon:before {
       font-size: 18px;

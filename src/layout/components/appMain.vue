@@ -1,6 +1,8 @@
 <template>
   <section class="app-main">
-    <router-view :key="key"> </router-view>
+    <el-scrollbar class="app-main-wrap">
+      <router-view :key="key"> </router-view>
+    </el-scrollbar>
   </section>
 </template>
 
@@ -17,21 +19,16 @@
 
 <style scoped>
   .app-main {
-    min-height: calc(100vh - 50px);
     width: 100%;
     position: relative;
     padding: 0px;
-  }
-  .fixed-header + .app-main {
-    padding-top: 50px;
+    overflow: auto;
+    padding: 15px;
   }
 </style>
 
 <style lang="scss">
-  // fix css style bug in open el-dialog
-  .el-popup-parent--hidden {
-    .fixed-header {
-      padding-right: 15px;
-    }
+  .app-main-wrap {
+    height: calc(100vh - 80px) !important;
   }
 </style>
