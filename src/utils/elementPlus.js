@@ -13,6 +13,7 @@ import {
   ElInput,
   ElMessageBox,
   ElMessage,
+  ElDrawer,
 } from 'element-plus';
 
 const components = [
@@ -29,6 +30,7 @@ const components = [
   ElPagination,
   ElInput,
   ElMessageBox,
+  ElDrawer,
 ];
 const plugins = [ElMessageBox, ElMessage];
 

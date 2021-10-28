@@ -1,16 +1,20 @@
 <template>
   <div class="home-wrap">
     <rkTable ref="rkTableRef" @fetchList="fetchList" @delItem="delItem" :tableOption="tableOption"></rkTable>
+    <el-drawer v-model="detailDrawer" title="详情" direction="rtl" size="50%" :destroy-on-close="true" :close-on-click-modal="false">
+      <span>Hi, there!</span>
+    </el-drawer>
   </div>
 </template>
 <script>
-  import { getCurrentInstance } from 'vue';
+  import { getCurrentInstance, ref } from 'vue';
   import rkTable from '@/components/rkTable.vue';
   export default {
     components: { rkTable },
     name: 'home',
     setup(pro, content) {
       let $api = getCurrentInstance().appContext.config.globalProperties.$api;
+      let detailDrawer = ref(false);
       let tableOption = {
         columns: [
           {
@@ -29,8 +33,8 @@
               {
                 btnName: '修改',
                 type: 'default',
-                fun: tableRefData => {
-                  handleSearch(tableRefData);
+                fun: row => {
+                  detailDrawer.value = true;
                 },
               },
               {
@@ -46,19 +50,22 @@
         ],
         columnKey: 'id',
       };
+
       // 列表
       const fetchList = data => {
         $api.user.fetchUsers().then(res => {
-          data.tableData = res.splice(0, 9);
+          data.tableData = res.splice(0, 19);
           data.total = res.length;
         });
       };
+
       // 搜索
       const handleSearch = tableRefData => {
         tableRefData.tableData = [];
         tableRefData.pageIndex = 1;
         fetchList(tableRefData);
       };
+
       // 删除
       const delItem = (row, tableRefData) => {
         tableRefData.tableData = [];
@@ -69,6 +76,7 @@
         fetchList,
         delItem,
         tableOption,
+        detailDrawer,
       };
     },
   };
@@ -76,6 +84,5 @@
 <style lang="scss" scoped>
   .home-wrap {
     width: 100%;
-    height: 500px;
   }
 </style>

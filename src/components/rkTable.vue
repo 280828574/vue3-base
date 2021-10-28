@@ -1,41 +1,45 @@
 <template>
-  <div class="home-wrap">
-    <el-table :data="data.tableData" style="width: 100%">
-      <template v-for="item in tableOption.columns" :key="item[tableOption.columnKey]">
-        <el-table-column v-if="!item.columnType" :prop="item.prop" :label="item.label" :width="item.width" />
-        <el-table-column label="操作" width="120" v-if="item.columnType === 'btn'">
-          <template #default="scope">
-            <template v-for="lat in item.btns" :key="lat.btnName">
-              <el-button
-                v-if="lat.type === 'default'"
-                :style="{ color: lat.color || '' }"
-                type="text"
-                size="small"
-                @click="lat.fun(data)"
-                >{{ lat.btnName }}</el-button
-              >
-              <el-button
-                v-if="lat.type === 'del'"
-                :style="{ color: lat.color || '' }"
-                type="text"
-                size="small"
-                @click="handleDel(scope.row, lat)"
-                >{{ lat.btnName }}</el-button
-              >
+  <div class="rk-table-wrap">
+    <el-scrollbar style="height:calc(100vh - 130px)">
+      <el-table :data="data.tableData" style="width: 100%" class="table-main">
+        <template v-for="item in tableOption.columns" :key="item[tableOption.columnKey]">
+          <el-table-column v-if="!item.columnType" :prop="item.prop" :label="item.label" :width="item.width" />
+          <el-table-column label="操作" width="120" v-if="item.columnType === 'btn'">
+            <template #default="scope">
+              <template v-for="lat in item.btns" :key="lat.btnName">
+                <el-button
+                  v-if="lat.type === 'default'"
+                  :style="{ color: lat.color || '' }"
+                  type="text"
+                  size="small"
+                  @click="lat.fun(scope.row)"
+                  >{{ lat.btnName }}</el-button
+                >
+                <el-button
+                  v-if="lat.type === 'del'"
+                  :style="{ color: lat.color || '' }"
+                  type="text"
+                  size="small"
+                  @click="handleDel(scope.row, lat)"
+                  >{{ lat.btnName }}</el-button
+                >
+              </template>
             </template>
-          </template>
-        </el-table-column>
-      </template>
-    </el-table>
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="data.total"
-      :current-page="data.pageIndex"
-      :page-size="data.pageSize"
-      @current-change="changePage"
-    >
-    </el-pagination>
+          </el-table-column>
+        </template>
+      </el-table>
+    </el-scrollbar>
+    <div class="tar rk-mt-10">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="data.total"
+        :current-page="data.pageIndex"
+        :page-size="data.pageSize"
+        @current-change="changePage"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -94,8 +98,10 @@
   };
 </script>
 <style lang="scss" scoped>
-  .home-wrap {
+  .rk-table-wrap {
     width: 100%;
-    height: 500px;
+    .table-main {
+      padding: 0 5px;
+    }
   }
 </style>
