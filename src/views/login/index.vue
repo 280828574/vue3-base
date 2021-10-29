@@ -51,9 +51,7 @@
       // 登录
       const handleLogin = async () => {
         const form = unref(formRef);
-        if (!form) {
-          return;
-        }
+        if (!form) return;
         try {
           await form.validate();
           loginApi();
