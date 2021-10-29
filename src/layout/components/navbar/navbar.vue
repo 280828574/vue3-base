@@ -18,7 +18,7 @@
           <el-dropdown-menu>
             <el-dropdown-item command="/home">首页</el-dropdown-item>
             <el-dropdown-item command="">管理员</el-dropdown-item>
-            <el-dropdown-item command="/logOut">退出登录</el-dropdown-item>
+            <el-dropdown-item command="/login">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>

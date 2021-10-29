@@ -21,6 +21,14 @@ const routes = [
     ],
   },
   {
+    path: '/login',
+    component: layout,
+    component: () => import('@/views/login/index.vue'),
+    meta: {
+      title: '登录',
+    },
+  },
+  {
     path: '/home1',
     component: layout,
     redirect: '/home1',

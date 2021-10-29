@@ -1,17 +1,20 @@
 // 标准色
-$mainBackground: #FF4664; // 品牌色，主色调
-$tagColor: #FFA200; // 星级评价、标签色
-$succeedColor: #00A700; // 标签色，成功色
+$mainBackground: #ff4664; // 品牌色，主色调
+$tagColor: #ffa200; // 星级评价、标签色
+$succeedColor: #00a700; // 标签色，成功色
 
 //辅助色
 $borderColor: #dfdfdf; // 边框分割线
-$sidebarColor: #EEEEEE; // 侧边栏
+$sidebarColor: #eeeeee; // 侧边栏
 $grayBackground: #f5f5f5; // 背景颜色
 
+// 背景主色
+$backgroundMain: #304156;
+
 //辅助色
-$echarts1: #FF8830; // 数据图表  血压收缩压、血糖、心率的曲线图
-$echarts2: #FFC230; // 数据图表  血压舒张压的曲线图，血压等级标签色
+$echarts1: #ff8830; // 数据图表  血压收缩压、血糖、心率的曲线图
+$echarts2: #ffc230; // 数据图表  血压舒张压的曲线图，血压等级标签色
 
 //文字色
-$mainTextColor: #3E3A39; // 文字主色 主体文字的颜色，文字按钮色，次要按钮文字色
-$textTagColor: #A5A5A5; // 标签色，按钮文字 标签背景色，置灰按钮文字
+$mainTextColor: #3e3a39; // 文字主色 主体文字的颜色，文字按钮色，次要按钮文字色
+$textTagColor: #a5a5a5; // 标签色，按钮文字 标签背景色，置灰按钮文字

@@ -24,6 +24,6 @@
   .sidebar-wrap {
     height: 100%;
     overflow-y: auto;
-    background: #304156;
+    background: $backgroundMain;
   }
 </style>

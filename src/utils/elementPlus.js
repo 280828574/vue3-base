@@ -14,6 +14,8 @@ import {
   ElMessageBox,
   ElMessage,
   ElDrawer,
+  ElForm,
+  ElFormItem,
 } from 'element-plus';
 
 const components = [
@@ -31,6 +33,8 @@ const components = [
   ElInput,
   ElMessageBox,
   ElDrawer,
+  ElForm,
+  ElFormItem,
 ];
 const plugins = [ElMessageBox, ElMessage];
 

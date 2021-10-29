@@ -59,7 +59,7 @@
 <style lang="scss">
   .sidebar-main-wrap {
     height: 100%;
-    background: #304156;
+    background: $backgroundMain;
     .el-menu {
       border-right: none;
     }
@@ -73,7 +73,7 @@
       color: #409eff;
     }
     .el-menu-vertical-wrap {
-      background: #304156;
+      background: $backgroundMain;
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
@@ -96,7 +96,7 @@
         background-color: #263445;
       }
       .el-sub-menu .el-menu {
-        background: #304156;
+        background: $backgroundMain;
       }
       &.no-icon {
         .el-sub-menu__icon-arrow {
