@@ -9,7 +9,7 @@ const findItemByCode = (arrInit, codeInit, keyInit, subKeyInit) => {
     return undefined;
   }
   let returnItem;
-  let findCode = function (arr, code, key, subKey) {
+  let findCode = function(arr, code, key, subKey) {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i][key] === code) {
         returnItem = arr[i];
@@ -22,6 +22,4 @@ const findItemByCode = (arrInit, codeInit, keyInit, subKeyInit) => {
   findCode(arrInit, codeInit, keyInit, subKeyInit);
   return returnItem;
 };
-export default {
-  findItemByCode,
-};
+export { findItemByCode };
