@@ -1,12 +1,6 @@
 <template>
-  <div class="app-wrap">
-    <router-view />
-  </div>
+  <router-view></router-view>
 </template>
-<style>
-  .app-wrap {
-    width: 100%;
-    height: 100vh;
-    background: #f5f5f5;
-  }
-</style>
+<script setup></script>
+
+<style></style>

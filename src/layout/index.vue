@@ -12,14 +12,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import sidebar from './components/sidebar/index.vue';
   import navbar from './components/navbar/navbar.vue';
   import appMain from './components/appMain.vue';
-  export default {
-    name: 'Layout',
-    components: { sidebar, navbar, appMain },
-  };
 </script>
 
 <style lang="scss" scoped>

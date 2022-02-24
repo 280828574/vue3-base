@@ -7,23 +7,13 @@
     <sidebarMain></sidebarMain>
   </div>
 </template>
-<script>
+<script setup>
   import sidebarMain from './main.vue';
-
-  export default {
-    name: 'sidebar',
-    components: { sidebarMain },
-    data() {
-      return {};
-    },
-    mounted() {},
-    methods: {},
-  };
 </script>
 <style lang="scss" scoped>
   .sidebar-wrap {
     height: 100%;
     overflow-y: auto;
-    background: $backgroundMain;
+    background: rgb(84, 92, 100);
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="rk-table-wrap">
-    <el-scrollbar style="height:calc(100vh - 130px)">
+    <el-scrollbar style="height: calc(100vh - 130px)">
       <el-table :data="data.tableData" style="width: 100%" class="table-main">
         <template v-for="item in tableOption.columns" :key="item[tableOption.columnKey]">
           <el-table-column v-if="!item.columnType" :prop="item.prop" :label="item.label" :width="item.width" />
@@ -42,59 +42,45 @@
     </div>
   </div>
 </template>
-<script>
-  import { onMounted, reactive, getCurrentInstance } from 'vue';
-  import { ElMessageBox } from 'element-plus';
-  export default {
-    name: 'home',
-    emits: ['fetchList'],
-    props: {
-      // 表格选项
-      tableOption: {
-        type: Object,
-        required: true,
-      },
-    },
-    setup(pro, { emit }) {
-      let data = reactive({
-        tableData: [], // 表格数据
-        total: 0, // 总数
-        pageIndex: pro.tableOption.pageIndex || 1, // 页码
-        pageSize: pro.tableOption.pageSize || 10, // 条数
-      });
-      onMounted(() => {
-        fetchList();
-      });
-      // 获取列表
-      const fetchList = () => {
-        emit('fetchList', data);
-      };
-      // 分页
-      const changePage = page => {
-        data.pageIndex = page;
-        data.tableData = [];
-        fetchList();
-      };
-      // 删除
-      const handleDel = (row, item) => {
-        ElMessageBox.confirm(`确定要删除该条记录么?`, 'Warning', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning',
-          closeOnClickModal: false,
-        })
-          .then(() => {
-            item.fun(row, data);
-          })
-          .catch(() => {});
-      };
-      return {
-        data,
-        changePage,
-        fetchList,
-        handleDel,
-      };
-    },
+<script setup>
+  import { onMounted, reactive } from 'vue';
+
+  const props = defineProps({
+    tableOption: Object,
+  });
+  const emit = defineEmits();
+
+  let data = reactive({
+    tableData: [], // 表格数据
+    total: 0, // 总数
+    pageIndex: props.tableOption.pageIndex || 1, // 页码
+    pageSize: props.tableOption.pageSize || 10, // 条数
+  });
+  onMounted(() => {
+    fetchList();
+  });
+  // 获取列表
+  const fetchList = () => {
+    emit('fetchList', data);
+  };
+  // 分页
+  const changePage = page => {
+    data.pageIndex = page;
+    data.tableData = [];
+    fetchList();
+  };
+  // 删除
+  const handleDel = (row, item) => {
+    ElMessageBox.confirm(`确定要删除该条记录么?`, 'Warning', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+      closeOnClickModal: false,
+    })
+      .then(() => {
+        item.fun(row, data);
+      })
+      .catch(() => {});
   };
 </script>
 <style lang="scss" scoped>

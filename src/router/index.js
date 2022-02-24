@@ -13,7 +13,7 @@ const routes = [
       {
         path: '/home',
         name: 'home',
-        component: () => import('@/views/home/index.vue'),
+        component: () => import('@/views/home.vue'),
         meta: {
           title: '首页',
         },
@@ -21,31 +21,38 @@ const routes = [
     ],
   },
   {
-    path: '/login',
+    path: '/userManage',
     component: layout,
-    component: () => import('@/views/login/index.vue'),
+    redirect: '/policed',
     meta: {
-      title: '登录',
-    },
-  },
-  {
-    path: '/home1',
-    component: layout,
-    redirect: '/home1',
-    meta: {
-      title: '首页1',
+      title: '人员管理',
       icon: 'el-icon-folder',
     },
     children: [
       {
-        path: '/home1',
-        name: 'home1',
-        component: () => import('@/views/Home1.vue'),
+        path: '/policed',
+        name: 'policed',
+        component: () => import('@/views/user/policed/list.vue'),
         meta: {
-          title: '首页1',
+          title: '巡查人员',
+        },
+      },
+      {
+        path: '/assess',
+        name: 'assess',
+        component: () => import('@/views/user/assess/list.vue'),
+        meta: {
+          title: '考核人员',
         },
       },
     ],
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/login.vue'),
+    meta: {
+      title: '登录',
+    },
   },
 ];
 

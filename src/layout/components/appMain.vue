@@ -1,20 +1,18 @@
 <template>
   <section class="app-main">
     <el-scrollbar class="app-main-wrap">
-      <router-view :key="key"> </router-view>
+      <router-view> </router-view>
     </el-scrollbar>
   </section>
 </template>
 
-<script>
-  export default {
-    name: 'AppMain',
-    computed: {
-      key() {
-        return this.$route.path;
-      },
-    },
-  };
+<script setup>
+  import { computed } from 'vue';
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
+  const key = computed(() => {
+    return router.path;
+  });
 </script>
 
 <style scoped>

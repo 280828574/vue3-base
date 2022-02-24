@@ -13,12 +13,16 @@
       >
         <div v-for="item in routes" :key="item.path">
           <el-menu-item :index="item.children[0].path" v-if="item.children && item.children.length === 1">
-            <i :class="[item.meta.icon]"></i>
+            <el-icon>
+              <Menu />
+            </el-icon>
             <span v-if="!isCollapse"> {{ item.children[0].meta.title }}</span>
           </el-menu-item>
           <el-sub-menu v-if="item.children && item.children.length > 1" :index="item.path">
             <template #title>
-              <i :class="[item.meta.icon]"></i>
+              <el-icon>
+                <Menu />
+              </el-icon>
               <span v-if="!isCollapse">{{ item.meta.title }}</span>
             </template>
             <div>
@@ -30,36 +34,27 @@
     </el-scrollbar>
   </div>
 </template>
-<script>
+<script setup>
   import { computed } from 'vue';
   import { useRouter } from 'vue-router';
   import { useStore } from 'vuex';
-  export default {
-    name: 'sidebar-main',
-    setup(props) {
-      const router = useRouter();
-      const routes = router.options.routes;
-      const handleOpen = key => {
-        router.push(key);
-      };
 
-      let store = useStore();
-      let isCollapse = computed(() => {
-        return store.getters.isCollapse;
-      });
+  const router = useRouter();
+  const routes = router.options.routes;
 
-      return {
-        handleOpen,
-        routes,
-        isCollapse,
-      };
-    },
+  const handleOpen = key => {
+    router.push(key);
   };
+
+  let store = useStore();
+  let isCollapse = computed(() => {
+    return store.getters.isCollapse;
+  });
 </script>
 <style lang="scss">
   .sidebar-main-wrap {
     height: 100%;
-    background: $backgroundMain;
+    background: rgb(84, 92, 100);
     .el-menu {
       border-right: none;
     }
@@ -73,7 +68,7 @@
       color: #409eff;
     }
     .el-menu-vertical-wrap {
-      background: $backgroundMain;
+      background: rgb(84, 92, 100);
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
@@ -87,16 +82,16 @@
         color: #409eff;
       }
       .el-sub-menu__title:hover {
-        background-color: #263445;
+        background-color: rgba(67, 74, 80);
       }
       .el-menu-item.is-active {
         color: #409eff;
       }
       .el-menu-item:hover {
-        background-color: #263445;
+        background-color: rgba(67, 74, 80);
       }
       .el-sub-menu .el-menu {
-        background: $backgroundMain;
+        background: rgb(84, 92, 100);
       }
       &.no-icon {
         .el-sub-menu__icon-arrow {
