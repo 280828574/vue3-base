@@ -3,9 +3,6 @@
 </template>
 
 <script setup>
-  import { getCurrentInstance, ref } from 'vue';
-  import rkTable from '@/components/rkTable.vue';
-
   let $api = getCurrentInstance().appContext.config.globalProperties.$api;
   let detailDrawer = ref(false);
   let tableOption = {

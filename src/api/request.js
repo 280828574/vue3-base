@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { ElMessage } from 'element-plus';
 
 // 获取环境变量
 const ENV = import.meta.env;
@@ -16,6 +15,8 @@ service.interceptors.request.use(
     for (const i in config.header) {
       config.headers[i] = config.header[i];
     }
+    let accessToken = window.sessionStorage.getItem('accessToken');
+    config.headers['accessToken'] = accessToken;
     if (!config.data) {
       config.data = [];
     }

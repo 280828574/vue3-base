@@ -19,9 +19,10 @@
   .app-main {
     width: 100%;
     position: relative;
-    padding: 0px;
+    /*padding: 0px;*/
     overflow: auto;
     padding: 15px;
+    background: #f5f5f5;
   }
 </style>
 

@@ -1,5 +1,7 @@
 ﻿@import './global.scss';
 body {
+  padding: 0;
+  margin: 0;
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -19,6 +21,14 @@ html {
   height: 100%;
 }
 
+h1,h2,h3,h4,h5,h6,p,ul{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
@@ -28,9 +38,6 @@ select:-webkit-autofill {
 *:before,
 *:after {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
   -webkit-tap-highlight-color: transparent;
 }
 a:focus,
@@ -139,6 +146,12 @@ div:focus {
   -webkit-align-items: center;
   justify-content: space-between;
   -webkit-justify-content: space-between;
+}
+.flex-spjy {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
 }
 .rk-ma-5 {
   margin: 5px;
@@ -319,4 +332,19 @@ div:focus {
 }
 .rk-pb-30 {
   padding-bottom: 30px;
+}
+.cover-img {
+  position: relative;
+
+  .cover-img-info{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+  }
 }

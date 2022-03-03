@@ -5,10 +5,9 @@ import api from '@/api';
 import directives from './directives/index.js'; // 自定义指令
 import store from './store/index.js'; // vuex
 import scripts from './scripts/index.js'; // scripts
+import constant from './constant/index.js'; // scripts
 
-import 'element-plus/theme-chalk/src/message.scss';
-
-import * as ElIconModules from '@element-plus/icons'; //导入所有element icon图标
+import * as ElIconModules from '@element-plus/icons-vue'; //导入所有element icon图标
 import { Menu as MenuIcon } from '@element-plus/icons-vue';
 const app = createApp(App); // 初始化app
 
@@ -23,5 +22,10 @@ for (const iconName in ElIconModules) {
 // 挂载全局
 app.config.globalProperties.$scripts = scripts;
 app.config.globalProperties.$api = api;
+app.config.globalProperties.$constant = constant;
 directives(app); //载入自定义指令
 app.use(router).use(store).mount('#app');
+//屏蔽错误信息
+// app.config.errorHandler = () => null
+//屏蔽警告信息
+// app.config.warnHandler = () => null

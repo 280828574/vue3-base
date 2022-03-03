@@ -50,7 +50,17 @@
     if (!type) {
       return;
     }
-    router.push({ path: type });
+    ElMessageBox.confirm(`确定要退出登录么?`, 'Warning', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+      closeOnClickModal: false,
+    })
+      .then(() => {
+        window.sessionStorage.clear();
+        router.push({ path: type });
+      })
+      .catch(() => {});
   };
 </script>
 <style lang="scss" scoped>

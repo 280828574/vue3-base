@@ -12,21 +12,21 @@
         :collapse="isCollapse"
       >
         <div v-for="item in routes" :key="item.path">
-          <el-menu-item :index="item.children[0].path" v-if="item.children && item.children.length === 1">
+          <el-menu-item :index="item.children[0].path" v-if="item.isMenu && item.children && item.children.length === 1">
             <el-icon>
               <Menu />
             </el-icon>
             <span v-if="!isCollapse"> {{ item.children[0].meta.title }}</span>
           </el-menu-item>
-          <el-sub-menu v-if="item.children && item.children.length > 1" :index="item.path">
+          <el-sub-menu v-if="item.isMenu && item.children && item.children.length > 1" :index="item.path">
             <template #title>
               <el-icon>
                 <Menu />
               </el-icon>
               <span v-if="!isCollapse">{{ item.meta.title }}</span>
             </template>
-            <div>
-              <el-menu-item :index="list.path" v-for="list in item.children" :key="list.path">{{ list.meta.title }}</el-menu-item>
+            <div v-for="list in item.children" :key="list.path">
+              <el-menu-item v-if="list.isMenu" :index="list.path" >{{ list.meta.title }}</el-menu-item>
             </div>
           </el-sub-menu>
         </div>

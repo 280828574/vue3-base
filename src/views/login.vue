@@ -4,8 +4,8 @@
       <p class="title tac rk-mb-15">茶卫士后台管理系统</p>
 
       <el-form ref="formRef" :model="formData" :rules="formRule">
-        <el-form-item prop="loginName">
-          <el-input class="el-input-wrap" v-model="formData.loginName" placeholder="用户名">
+        <el-form-item prop="userName">
+          <el-input class="el-input-wrap" v-model="formData.userName" placeholder="用户名">
             <template #prepend
               ><el-icon>
                 <avatar />
@@ -14,8 +14,8 @@
           </el-input>
         </el-form-item>
         <div class="rk-mb-15"></div>
-        <el-form-item prop="psd">
-          <el-input class="el-input-wrap" v-model="formData.psd" show-password placeholder="密码">
+        <el-form-item prop="password">
+          <el-input class="el-input-wrap" v-model="formData.password" show-password placeholder="密码">
             <template #prepend
               ><el-icon>
                 <lock />
@@ -30,24 +30,25 @@
   </div>
 </template>
 <script setup>
-  import { reactive, ref, unref } from 'vue';
-  import { useRouter } from 'vue-router';
   const router = useRouter();
   const formRef = ref();
+  let $api = getCurrentInstance().appContext.config.globalProperties.$api;
+  let $constant = getCurrentInstance().appContext.config.globalProperties.$constant;
 
   let formData = reactive({
-    loginName: '', // 用户名
-    psd: '', // 密码
+    userName: '', // 用户名
+    password: '', // 密码
+    clientId: $constant.base.clientId,
   });
   let formRule = {
-    psd: [
+    password: [
       {
         required: true,
         trigger: 'blur',
         message: '请输入用户名',
       },
     ],
-    loginName: [
+    userName: [
       {
         required: true,
         trigger: 'blur',
@@ -69,8 +70,19 @@
 
   // 登录接口
   const loginApi = () => {
-    // isLoading.value = true;
-    router.push({ path: '/home' });
+    isLoading.value = true;
+    $api.user
+      .login(formData)
+      .then(res => {
+        isLoading.value = false;
+        let loginInfo = res.data;
+        window.sessionStorage.setItem('userInfo', JSON.stringify(loginInfo.userInfo));
+        window.sessionStorage.setItem('accessToken', loginInfo?.userInfo?.accessToken);
+        router.push({ path: '/home' });
+      })
+      .catch(() => {
+        isLoading.value = false;
+      });
   };
 </script>
 <style lang="scss">

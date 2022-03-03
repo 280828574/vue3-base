@@ -1,10 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import layout from '@/layout/index.vue';
+
 const routes = [
+  {
+    path: '/login',
+    component: () => import('@/views/login.vue'),
+    meta: {
+      title: '登录',
+    },
+  },
   {
     path: '/',
     component: layout,
     redirect: '/home',
+    isMenu: true,
     meta: {
       title: '首页',
       icon: 'el-icon-folder',
@@ -13,6 +22,7 @@ const routes = [
       {
         path: '/home',
         name: 'home',
+        isMenu: true,
         component: () => import('@/views/home.vue'),
         meta: {
           title: '首页',
@@ -20,45 +30,24 @@ const routes = [
       },
     ],
   },
-  {
-    path: '/userManage',
-    component: layout,
-    redirect: '/policed',
-    meta: {
-      title: '人员管理',
-      icon: 'el-icon-folder',
-    },
-    children: [
-      {
-        path: '/policed',
-        name: 'policed',
-        component: () => import('@/views/user/policed/list.vue'),
-        meta: {
-          title: '巡查人员',
-        },
-      },
-      {
-        path: '/assess',
-        name: 'assess',
-        component: () => import('@/views/user/assess/list.vue'),
-        meta: {
-          title: '考核人员',
-        },
-      },
-    ],
-  },
-  {
-    path: '/login',
-    component: () => import('@/views/login.vue'),
-    meta: {
-      title: '登录',
-    },
-  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  let accessToken = window.sessionStorage.getItem('accessToken');
+  if (to.path == '/login') {
+    next();
+    return;
+  }
+  if (!accessToken) {
+    next(`/login`);
+    return;
+  }
+  next();
 });
 
 export default router;
