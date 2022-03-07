@@ -70,19 +70,20 @@
 
   // 登录接口
   const loginApi = () => {
-    isLoading.value = true;
-    $api.user
-      .login(formData)
-      .then(res => {
-        isLoading.value = false;
-        let loginInfo = res.data;
-        window.sessionStorage.setItem('userInfo', JSON.stringify(loginInfo.userInfo));
-        window.sessionStorage.setItem('accessToken', loginInfo?.userInfo?.accessToken);
-        router.push({ path: '/home' });
-      })
-      .catch(() => {
-        isLoading.value = false;
-      });
+    router.push({ path: '/home' });
+    // isLoading.value = true;
+    // $api.user
+    //   .login(formData)
+    //   .then(res => {
+    //     isLoading.value = false;
+    //     let loginInfo = res.data;
+    //     window.sessionStorage.setItem('userInfo', JSON.stringify(loginInfo.userInfo));
+    //     window.sessionStorage.setItem('accessToken', loginInfo?.userInfo?.accessToken);
+    //     router.push({ path: '/home' });
+    //   })
+    //   .catch(() => {
+    //     isLoading.value = false;
+    //   });
   };
 </script>
 <style lang="scss">
