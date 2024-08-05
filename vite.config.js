@@ -1,11 +1,11 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
-import AutoImport from 'unplugin-auto-import/vite'; // element plus 自动引入
-import Components from 'unplugin-vue-components/vite'; // element plus 自动引入
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'; // element plus 自动引入
-import OptimizationPersist from 'vite-plugin-optimize-persist'; // 启动优化
-import PkgConfig from 'vite-plugin-package-config'; // 启动优化
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import AutoImport from 'unplugin-auto-import/vite' // element plus 自动引入
+import Components from 'unplugin-vue-components/vite' // element plus 自动引入
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers' // element plus 自动引入
+import OptimizationPersist from 'vite-plugin-optimize-persist' // 启动优化
+import PkgConfig from 'vite-plugin-package-config' // 启动优化
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +35,12 @@ export default defineConfig({
       '@': path.join(__dirname, './src'),
     },
   },
+  define: {
+    __VUE_PROD_DEVTOOLS__: false,
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_HYDRATION__: true,
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -47,7 +53,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
           }
         },
       },
@@ -67,4 +73,4 @@ export default defineConfig({
       },
     },
   },
-});
+})
