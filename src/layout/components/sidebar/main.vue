@@ -7,26 +7,26 @@
     <el-scrollbar height="100vh">
       <el-menu
         default-active="/home"
-        :class="['el-menu-vertical-wrap', { 'no-icon': isCollapse }]"
+        :class="['el-menu-vertical-wrap', { 'no-icon': $stores.useCollapse().isCollapse }]"
         @select="handleOpen"
-        :collapse="isCollapse"
+        :collapse="$stores.useCollapse().isCollapse"
       >
         <div v-for="item in routes" :key="item.path">
           <el-menu-item :index="item.children[0].path" v-if="item.isMenu && item.children && item.children.length === 1">
             <el-icon>
               <Menu />
             </el-icon>
-            <span v-if="!isCollapse"> {{ item.children[0].meta.title }}</span>
+            <span v-if="!$stores.useCollapse().isCollapse"> {{ item.children[0].meta.title }}</span>
           </el-menu-item>
           <el-sub-menu v-if="item.isMenu && item.children && item.children.length > 1" :index="item.path">
             <template #title>
               <el-icon>
                 <Menu />
               </el-icon>
-              <span v-if="!isCollapse">{{ item.meta.title }}</span>
+              <span v-if="!$stores.useCollapse().isCollapse">{{ item.meta.title }}</span>
             </template>
             <div v-for="list in item.children" :key="list.path">
-              <el-menu-item v-if="list.isMenu" :index="list.path" >{{ list.meta.title }}</el-menu-item>
+              <el-menu-item v-if="list.isMenu" :index="list.path">{{ list.meta.title }}</el-menu-item>
             </div>
           </el-sub-menu>
         </div>
@@ -35,21 +35,18 @@
   </div>
 </template>
 <script setup>
-  import { computed } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { useStore } from 'vuex';
-
-  const router = useRouter();
-  const routes = router.options.routes;
+  let proxy = getCurrentInstance().proxy
+  const $stores = proxy.$stores
+  const router = useRouter()
+  const routes = router.options.routes
 
   const handleOpen = key => {
-    router.push(key);
-  };
+    router.push(key)
+  }
 
-  let store = useStore();
-  let isCollapse = computed(() => {
-    return store.getters.isCollapse;
-  });
+  //   let isCollapse = computed(() => {
+  //     return store.getters.isCollapse;
+  //   });
 </script>
 <style lang="scss">
   .sidebar-main-wrap {

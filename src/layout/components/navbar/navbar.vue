@@ -4,11 +4,11 @@
 -->
 <template>
   <div class="navbar-wrap flex-zy rk-pr-15">
-    <el-icon class="curp rk-ml-15" :size="24" color="#606266" v-if="isCollapse">
-      <expand style="font-size: 24px" @click="changeSildebar" />
+    <el-icon class="curp rk-ml-15" :size="24" color="#606266" v-if="$stores.useCollapse().isCollapse">
+      <expand style="font-size: 24px" @click="$stores.useCollapse().change(false)" />
     </el-icon>
     <el-icon class="curp rk-ml-15" :size="24" color="#606266" v-else>
-      <fold style="font-size: 24px" @click="changeSildebar" />
+      <fold style="font-size: 24px" @click="$stores.useCollapse().change(true)" />
     </el-icon>
     <div>
       <el-dropdown trigger="click" @command="handleCommand">
@@ -30,25 +30,15 @@
   </div>
 </template>
 <script setup>
-  import { computed } from 'vue';
-  import { useStore } from 'vuex';
-  import { useRouter } from 'vue-router';
+  let proxy = getCurrentInstance().proxy
 
-  const store = useStore();
-  const router = useRouter();
-  let name = 'A';
-
-  const isCollapse = computed(() => {
-    return store.getters.isCollapse;
-  });
-
-  const changeSildebar = () => {
-    store.dispatch('collapse/changeCollapse');
-  };
+  const $stores = proxy.$stores
+  const router = useRouter()
+  let name = 'A'
 
   const handleCommand = type => {
     if (!type) {
-      return;
+      return
     }
     ElMessageBox.confirm(`确定要退出登录么?`, 'Warning', {
       confirmButtonText: '确定',
@@ -57,11 +47,11 @@
       closeOnClickModal: false,
     })
       .then(() => {
-        window.sessionStorage.clear();
-        router.push({ path: type });
+        window.sessionStorage.clear()
+        router.push({ path: type })
       })
-      .catch(() => {});
-  };
+      .catch(() => {})
+  }
 </script>
 <style lang="scss" scoped>
   .navbar-wrap {

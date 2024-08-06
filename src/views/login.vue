@@ -1,7 +1,7 @@
 <template>
   <div class="login-bg-wrap">
     <div class="main">
-      <p class="title tac rk-mb-15">茶卫士后台管理系统</p>
+      <p class="title tac rk-mb-15">后台管理系统</p>
 
       <el-form ref="formRef" :model="formData" :rules="formRule">
         <el-form-item prop="userName">
@@ -30,16 +30,16 @@
   </div>
 </template>
 <script setup>
-  const router = useRouter();
-  const formRef = ref();
-  let $api = getCurrentInstance().appContext.config.globalProperties.$api;
-  let $constant = getCurrentInstance().appContext.config.globalProperties.$constant;
+  const router = useRouter()
+  const formRef = ref()
+  let $api = getCurrentInstance().appContext.config.globalProperties.$api
+  let $constant = getCurrentInstance().appContext.config.globalProperties.$constant
 
   let formData = reactive({
     userName: '', // 用户名
     password: '', // 密码
     clientId: $constant.base.clientId,
-  });
+  })
   let formRule = {
     password: [
       {
@@ -55,22 +55,22 @@
         message: '请输入密码',
       },
     ],
-  };
-  let isLoading = ref(false);
+  }
+  let isLoading = ref(false)
 
   // 登录
   const handleLogin = async () => {
-    const form = unref(formRef);
-    if (!form) return;
+    const form = unref(formRef)
+    if (!form) return
     try {
-      await form.validate();
-      loginApi();
+      await form.validate()
+      loginApi()
     } catch (err) {}
-  };
+  }
 
   // 登录接口
   const loginApi = () => {
-    router.push({ path: '/home' });
+    router.push({ path: '/home' })
     // isLoading.value = true;
     // $api.user
     //   .login(formData)
@@ -84,7 +84,7 @@
     //   .catch(() => {
     //     isLoading.value = false;
     //   });
-  };
+  }
 </script>
 <style lang="scss">
   .login-bg-wrap {
