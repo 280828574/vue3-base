@@ -21,7 +21,6 @@
         <template #dropdown>
           <el-dropdown-menu class="rk-pt-5 rk-pb-5">
             <el-dropdown-item command="/home">首页</el-dropdown-item>
-            <el-dropdown-item command="">管理员</el-dropdown-item>
             <el-dropdown-item command="/login">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -40,17 +39,21 @@
     if (!type) {
       return
     }
-    ElMessageBox.confirm(`确定要退出登录么?`, 'Warning', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
-      closeOnClickModal: false,
-    })
-      .then(() => {
-        window.sessionStorage.clear()
-        router.push({ path: type })
+    if (type === '/login') {
+      ElMessageBox.confirm(`确定要退出登录么?`, 'Warning', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        closeOnClickModal: false,
       })
-      .catch(() => {})
+        .then(() => {
+          window.sessionStorage.clear()
+          router.push({ path: type })
+        })
+        .catch(() => {})
+    } else {
+      router.push({ path: type })
+    }
   }
 </script>
 <style lang="scss" scoped>

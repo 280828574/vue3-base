@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup>
-  import sidebarMain from './main.vue';
+  import sidebarMain from './sidebarMain.vue'
 </script>
 <style lang="scss" scoped>
   .sidebar-wrap {

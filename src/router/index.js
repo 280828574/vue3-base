@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import layout from '@/layout/index.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import layout from '@/layout/index.vue'
 
 const routes = [
   {
@@ -16,7 +16,6 @@ const routes = [
     isMenu: true,
     meta: {
       title: '首页',
-      icon: 'el-icon-folder',
     },
     children: [
       {
@@ -26,16 +25,48 @@ const routes = [
         component: () => import('@/views/home.vue'),
         meta: {
           title: '首页',
+          icon: 'Menu',
         },
       },
     ],
   },
-];
+  {
+    path: '/imgs',
+    component: layout,
+    redirect: '/imgs/list',
+    isMenu: true,
+    meta: {
+      title: '图片管理',
+      icon: 'Postcard',
+    },
+    children: [
+      {
+        path: '/imgs/list',
+        name: 'imgsList',
+        isMenu: true,
+        component: () => import('@/views/imgs/list.vue'),
+        meta: {
+          title: '图片管理',
+          icon: 'Postcard',
+        },
+      },
+      {
+        path: '/imgs/categroy',
+        name: 'imgsCategroy',
+        isMenu: true,
+        component: () => import('@/views/imgs/categroy.vue'),
+        meta: {
+          title: '图片分类',
+        },
+      },
+    ],
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 
 // router.beforeEach((to, from, next) => {
 //   let accessToken = window.sessionStorage.getItem('accessToken');
@@ -50,4 +81,4 @@ const router = createRouter({
 //   next();
 // });
 
-export default router;
+export default router
