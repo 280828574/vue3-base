@@ -31,6 +31,27 @@ const routes = [
     ],
   },
   {
+    path: '/importFile',
+    component: layout,
+    redirect: '/importFile',
+    isMenu: true,
+    meta: {
+      title: '远程加载文件',
+    },
+    children: [
+      {
+        path: '/importFile',
+        name: 'importFile',
+        isMenu: true,
+        component: () => import('@/views/importFile.vue'),
+        meta: {
+          title: '远程加载文件',
+          icon: 'Menu',
+        },
+      },
+    ],
+  },
+  {
     path: '/imgs',
     component: layout,
     redirect: '/imgs/list',

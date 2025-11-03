@@ -17,7 +17,5 @@
 <style lang="scss">
   .sidebar-wrap {
     height: 100%;
-    width: 200px;
-    background-color: #304156;
   }
 </style>

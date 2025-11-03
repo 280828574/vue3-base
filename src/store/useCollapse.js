@@ -4,7 +4,7 @@ export const useCollapse = defineStore({
   id: 'useCollapse',
   state: () => {
     return {
-      isCollapse: true,
+      isCollapse: false,
     }
   },
   actions: {

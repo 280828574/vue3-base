@@ -3,12 +3,12 @@
  * @Description: 左侧导航组件
 -->
 <template>
-  <div class="sidebar-main-wrap">
+  <div class="sidebar-main-wrap" :class="{ 'sidebar-main-wrap-collapse': $stores.useCollapse().isCollapse }">
     <el-scrollbar height="100vh">
       <el-menu
         :default-active="router.currentRoute.value.fullPath"
         router
-        :class="['el-menu-vertical-wrap', { 'no-icon': $stores.useCollapse().isCollapse }]"
+        :class="['el-menu-vertical-wrap']"
         @select="handleOpen"
         :collapse="$stores.useCollapse().isCollapse"
       >
@@ -36,7 +36,6 @@
   </div>
 </template>
 <script setup>
-  import { h } from 'vue'
   let proxy = getCurrentInstance().proxy
   const $stores = proxy.$stores
   const router = useRouter()
@@ -52,19 +51,26 @@
 
 <style lang="scss">
   .sidebar-main-wrap {
+    width: 200px;
     height: 100%;
     background: rgb(84, 92, 100);
+    &.sidebar-main-wrap-collapse {
+      width: 50px;
+      .el-menu-item,
+      .el-sub-menu__title {
+        padding: 0 5px;
+      }
+    }
     .el-menu {
       border-right: none;
-    }
-    .el-menu-vertical-wrap:not(.el-menu--collapse) {
-      width: 200px;
     }
     .el-menu-item [class^='el-icon-'] {
       font-size: 14px;
     }
-    .el-menu--collapse .el-sub-menu.is-active i {
-      color: #409eff;
+    .el-menu--collapse {
+      .el-sub-menu.is-active i {
+        color: #409eff;
+      }
     }
     .el-menu-vertical-wrap {
       background: rgb(84, 92, 100);
@@ -91,11 +97,6 @@
       }
       .el-sub-menu .el-menu {
         background: rgb(84, 92, 100);
-      }
-      &.no-icon {
-        .el-sub-menu__icon-arrow {
-          display: none;
-        }
       }
     }
   }
