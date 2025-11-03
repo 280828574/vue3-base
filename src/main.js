@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
+import znhTool from 'znh-tool'
 import App from './App.vue'
 import router from '@/router'
 import api from '@/api'
 import directives from './directives/index.js' // 自定义指令
-import scripts from './scripts/index.js' // scripts
 import constant from './constant/index.js' // scripts
 import { createPinia } from 'pinia'
 import stores from './store/index'
@@ -23,7 +23,7 @@ for (const iconName in ElIconModules) {
 }
 
 // 挂载全局
-app.config.globalProperties.$scripts = scripts
+app.config.globalProperties.$scripts = znhTool
 app.config.globalProperties.$api = api
 app.config.globalProperties.$constant = constant
 app.config.globalProperties.$stores = stores

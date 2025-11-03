@@ -17,7 +17,8 @@
     "vue": "^3.3.9",
     "vue-router": "^4.2.5",
     "vue3-sfc-loader": "^0.9.5",
-    "vuex": "^4.1.0"
+    "vuex": "^4.1.0",
+    "znh-tool": "^1.0.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.1",
