@@ -87,31 +87,38 @@
   }
 </script>
 <style lang="scss">
+  @use '@/style/global.scss';
+</style>
+
+<style lang="scss" scoped>
   .login-bg-wrap {
     width: 100%;
-    height: 100%;
-    background: $backgroundMain;
-    padding-top: 20%;
-    .main {
-      width: 500px;
-      margin: 0 auto;
-      .title {
-        color: #fff;
-        font-size: 26px;
-      }
-      .el-input-wrap {
-        height: 40px;
-        .el-input__inner {
-          height: 40px;
-        }
-      }
-      .el-input__inner:focus {
-        border-color: transparent;
-      }
-      .login-btn {
-        width: 100%;
+    height: 100vh;
+    background-color: #2d3a4b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main {
+    width: 500px;
+    margin: 0 auto;
+    .title {
+      color: #fff;
+      font-size: 26px;
+    }
+    .el-input-wrap {
+      height: 40px;
+      .el-input__inner {
         height: 40px;
       }
+    }
+    .el-input__inner:focus {
+      border-color: transparent;
+    }
+    .login-btn {
+      width: 100%;
+      height: 40px;
     }
   }
 </style>

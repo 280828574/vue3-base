@@ -56,7 +56,7 @@
       border-right: none;
     }
     .el-menu-vertical-wrap:not(.el-menu--collapse) {
-      width: 240px;
+      width: 200px;
     }
     .el-menu-item [class^='el-icon-'] {
       font-size: 14px;

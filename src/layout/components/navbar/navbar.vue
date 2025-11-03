@@ -56,8 +56,10 @@
     }
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+  @use '@/style/global.scss';
   .navbar-wrap {
+    width: 100%;
     height: 50px;
     background: #fff;
     box-shadow: 0 1px 4px rgb(0 21 41 / 8%);

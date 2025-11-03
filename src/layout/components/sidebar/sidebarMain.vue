@@ -47,6 +47,10 @@
   }
 </script>
 <style lang="scss">
+  @use '@/style/global.scss';
+</style>
+
+<style lang="scss">
   .sidebar-main-wrap {
     height: 100%;
     background: rgb(84, 92, 100);
@@ -54,7 +58,7 @@
       border-right: none;
     }
     .el-menu-vertical-wrap:not(.el-menu--collapse) {
-      width: 240px;
+      width: 200px;
     }
     .el-menu-item [class^='el-icon-'] {
       font-size: 14px;

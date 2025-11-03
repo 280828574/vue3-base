@@ -10,10 +10,14 @@
 <script setup>
   import sidebarMain from './sidebarMain.vue'
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+  @use '@/style/global.scss';
+</style>
+
+<style lang="scss">
   .sidebar-wrap {
     height: 100%;
-    overflow-y: auto;
-    background: rgb(84, 92, 100);
+    width: 200px;
+    background-color: #304156;
   }
 </style>

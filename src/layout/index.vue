@@ -5,7 +5,7 @@
 <template>
   <div class="layout-wrap">
     <sidebar />
-    <div class="app-right-wrap">
+    <div class="app-right-wrap" :class="{ 'app-right-wrap-collapse': isCollapse }">
       <navbar></navbar>
       <appMain></appMain>
     </div>
@@ -13,17 +13,31 @@
 </template>
 
 <script setup>
-  import sidebar from './components/sidebar/index.vue';
-  import navbar from './components/navbar/navbar.vue';
-  import appMain from './components/appMain.vue';
+  import sidebar from './components/sidebar/index.vue'
+  import navbar from './components/navbar/navbar.vue'
+  import appMain from './components/appMain.vue'
+  let proxy = getCurrentInstance().proxy
+  const $stores = proxy.$stores
+  let isCollapse = computed(() => {
+    return $stores.useCollapse().isCollapse
+  })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @use '@/style/global.scss';
+</style>
+
+<style lang="scss">
   .layout-wrap {
+    width: 100%;
     height: 100%;
     display: flex;
     .app-right-wrap {
-      flex: 1;
+      width: calc(100% - 200px);
+      overflow: hidden;
+      &.app-right-wrap-collapse {
+        width: calc(100% - 64px);
+      }
     }
   }
 </style>
